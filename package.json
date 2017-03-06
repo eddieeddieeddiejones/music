@@ -1,0 +1,18 @@
+{
+  "name": "music",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "lpz <mail@lipengzhou.com> (http://www.lipengzhou.com/)",
+  "license": "MIT",
+  "dependencies": {
+    "art-template": "^3.0.3",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "formidable": "^1.0.17",
+    "jquery": "^3.1.1",
+    "moment": "^2.15.2",
+    "mysql": "^2.11.1"
+  }
+}

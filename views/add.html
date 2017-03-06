@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>我的音乐 - 添加音乐</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1><a href="/">我的音乐</a> <small>添加音乐</small></h1>
+    </div>
+    <!-- 
+      复杂表单提交：
+        method: post
+        enctype: multipart/form-data
+     -->
+    <form action="/add" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="title">标题</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="请输入音乐标题">
+      </div>
+      <div class="form-group">
+        <label for="artist">歌手</label>
+        <input type="text" class="form-control" id="singer" name="singer" placeholder="请输入歌手名称">
+      </div>
+      <div class="form-group">
+        <label for="music_file">音乐</label>
+        <!-- accept: List of types the server accepts, typically a file type. IE10+-->
+        <input type="file" id="music" name="music" accept="audio/*">
+        <p class="help-block">请选择要上传的音乐文件.</p>
+      </div>
+      <div class="form-group">
+        <label for="image_file">海报</label>
+        <input type="file" id="poster" name="img" accept="image/*">
+        <p class="help-block">请选择要上传的音乐海报.</p>
+      </div>
+      <button type="submit" class="btn btn-success">点击添加</button>
+    </form>
+  </div>
+</body>
+
+</html>

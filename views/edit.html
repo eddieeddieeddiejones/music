@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1><a href="/">我的音乐</a> <small>编辑音乐</small></h1>
+    </div>
+    <form id="form" action="/edit?id=<%= music.id %>" method="post">
+      <div class="form-group">
+        <label for="title">标题</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="请输入音乐标题" value="<%= music.title %>">
+      </div>
+      <div class="form-group">
+        <label for="artist">歌手</label>
+        <input type="text" class="form-control" id="singer" name="singer" placeholder="请输入歌手名称" value="<%= music.singer %>">
+      </div>
+      <!-- <div class="form-group">
+        <label for="music_file">音乐</label>
+        <input type="file" id="music_file">
+        <p class="help-block">请选择要上传的音乐文件.</p>
+      </div>
+      <div class="form-group">
+        <label for="image_file">海报</label>
+        <input type="file" id="image_file">
+        <p class="help-block">请选择要上传的音乐海报.</p>
+      </div> -->
+      <button type="submit" class="btn btn-success">确定修改</button>
+    </form>
+  </div>
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    $('#form').on('submit', function (e) {
+      // 把表单的默认行为干掉，因为提交后要根据服务器返回的状态码做相应的跳转。单纯使用表单默认提交，无法做后续操作。
+      e.preventDefault()
+      var url = $(this).attr('action')
+      var type = $(this).attr('method')
+      // 3
+      // console.log($(this).serialize())
+      $.ajax({
+        url: url,
+        type: type,
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function (data) {
+          // Object {code: 2000, msg: "uploads success"}
+          // 打印了，但是页面又立即跳转了，所以看不到
+          // console.log(data)
+          var code = data.code
+          if (code === 2000) {
+            // 删除成功，跳转到首页
+            window.location.href = '/'
+          } else if (code === 2001) {
+            window.alert('更新失败，请重试')
+          }
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

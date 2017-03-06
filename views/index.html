@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1><a href="/">我的音乐</a> <small>首页</small></h1>
+    </div>
+    <a class="btn btn-success" href="/add">添加歌曲</a>
+    <div class="pull-right">
+      <audio id="audio" src="uploads/万晓利 - 女儿情.mp3" controls="true"></audio>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>标题</th>
+          <th>歌手</th>
+          <th>海报</th>
+          <th>播放</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+      </tbody>
+    </table>
+  </div>
+  <script type="text/template" id="tpl">
+    {{ each list as value index }}
+    <tr>
+      <td>{{index+1}}</td>
+      <td>{{value.title}}</td>
+      <td>{{value.singer}}</td>
+      <td>
+        <img width="100" src="uploads/{{value.img}}" alt="">
+      </td>
+      <td>
+        <span data-music="{{value.music}}" class="glyphicon glyphicon-play"></span></td>
+      <td>
+        <a href="/edit?id={{value.id}}">修改</a>
+        <a data-id="{{value.id}}" class="remove" href="#">删除</a>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <script src="node_modules/art-template/dist/template.js"></script>
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    loadData()
+
+    function loadData() {
+      $.ajax({
+        url: '/musicList',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+          // {list: Array[{},{}]}
+          // console.log(data)
+          // template(id, data)
+          // 根据 id 渲染模板。内部会根据document.getElementById(id)查找模板。
+          $('#tbody').html(template('tpl', data))
+        }
+      })
+    }
+
+    // 对于动态加载的内容，记得要使用事件代理的形式注册事件
+    // 或者将添加事件的行为放到渲染 DOM 之后
+    $('body').on('click', '.glyphicon-play', function(e) {
+      var music = $(this).data('music')
+      // upload_b3db892ab168d7a007c597db80102981.mp3
+      // console.log(music)
+      $('#audio').attr('src', 'uploads/' + music).attr('autoplay', true)
+    })
+
+    $('body').on('click', '.remove', function(e) {
+      if (window.confirm('确定要删除？')) {
+        var id = $(this).data('id')
+        $.ajax({
+          url: '/remove',
+          type: 'get',
+          data: {
+            id: id
+          },
+          dataType: 'json',
+          success: function(data) {
+            if (data.code === 1000) {
+              loadData()
+            } else if (data.code === 1001) {
+              window.alert('删除失败')
+            }
+          }
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>
