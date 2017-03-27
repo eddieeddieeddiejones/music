@@ -12,6 +12,7 @@ exports.getMusicList = (req, res) => {
     if (err) {
       throw err
     }
+    console.log(rows)
     // 返回一个 JSON 响应。？？？？？？？？？？？？？？？？？？？？？？？？？？？？
     res.json({
       list: rows
