@@ -29,11 +29,11 @@
 
 1. 开wampserver，wampserver是一个web开发环境，wampserver自带mysql
 2. 装navicat,连接mysql，wampserver默认mysql用户名root，端口3306，密码为空。
-navicat是一个数据库管理工具。
+navicat是一个数据库管理工具。 
 ![navicat](readme_img/01_navicat.png "navicat")
 ![navicat连接mysql](readme_img/01_navicat_02.png "navicat连接mysql")
-3. 新建数据库，数据库名称是『codepackage』
-![新建数据库](readme_img/01_navicat_03.png "新建数据库")
+3. 新建数据库，数据库名称是『codepackage』  
+![新建数据库](readme_img/01_navicat_03.png "新建数据库")  
 4. 在数据库下新建一张表，其中id字段设置<font color=red>自动替增、设为主键</font>
 ![新建表](readme_img/02_新建表_01.png "新建表")
 ![新建表](readme_img/02_新建表_02_字段.png "新建表")
