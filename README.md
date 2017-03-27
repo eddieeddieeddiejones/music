@@ -251,7 +251,8 @@ exports.doAdd = (req, res) => {
     // console.log(files)
     const title = fields.title
     const singer = fields.singer
-    // F:\05-work\02-codePackage\10BasicalNode\07-Node基础-第7天-2016年10月25日-{Mysql基本使用、sql语句、数据增删改、留言本、网页
+    // F:\05-work\02-codePackage\10BasicalNode\07-Node基础-第7天-2016年10月25日-{Mysql基本使用、sql语句、
+    //数据增删改、留言本、网页
     // 版音乐播放器}\musicMyAnalysis\uploads\upload_8aab3ac004b7290f6bccc04953283409.mp3
     // console.log(files.music.path)
     const music = path.basename(files.music.path)
@@ -314,11 +315,13 @@ exports.showEdit = (req, res) => {
 <form id="form" action="/edit?id=<%= music.id %>" method="post">
   <div class="form-group">
     <label for="title">标题</label>
-    <input type="text" class="form-control" id="title" name="title" placeholder="请输入音乐标题" value="<%= music.title %>">
+    <input type="text" class="form-control" id="title" name="title"
+     placeholder="请输入音乐标题" value="<%= music.title %>">
   </div>
   <div class="form-group">
     <label for="artist">歌手</label>
-    <input type="text" class="form-control" id="singer" name="singer" placeholder="请输入歌手名称" value="<%= music.singer %>">
+    <input type="text" class="form-control" id="singer" name="singer" placeholder="请输入歌手名称"
+     value="<%= music.singer %>">
   </div>
   <!-- <div class="form-group">
     <label for="music_file">音乐</label>
@@ -340,11 +343,13 @@ exports.showEdit = (req, res) => {
 <form id="form" action="/edit?id=<%= music.id %>" method="post">
   <div class="form-group">
     <label for="title">标题</label>
-    <input type="text" class="form-control" id="title" name="title" placeholder="请输入音乐标题" value="<%= music.title %>">
+    <input type="text" class="form-control" id="title" name="title" placeholder="请输入音乐标题"
+     value="<%= music.title %>">
   </div>
   <div class="form-group">
     <label for="artist">歌手</label>
-    <input type="text" class="form-control" id="singer" name="singer" placeholder="请输入歌手名称" value="<%= music.singer %>">
+    <input type="text" class="form-control" id="singer" name="singer" placeholder="请输入歌手名称"
+     value="<%= music.singer %>">
   </div>
   <!-- <div class="form-group">
     <label for="music_file">音乐</label>
