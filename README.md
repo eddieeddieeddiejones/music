@@ -33,7 +33,6 @@ navicat是一个数据库管理工具。
 ![navicat](readme_img/01_navicat.png "navicat")
 ![navicat连接mysql](readme_img/01_navicat_02.png "navicat连接mysql")
 3. 新建数据库，数据库名称是『codepackage』
-
 ![新建数据库](readme_img/01_navicat_03.png "新建数据库")
 4. 在数据库下新建一张表，其中id字段设置<font color=red>自动替增、设为主键</font>
 ![新建表](readme_img/02_新建表_01.png "新建表")
